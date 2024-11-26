@@ -1,0 +1,67 @@
+---
+const {
+  url = "#",
+  cardimage = "",
+  cardimagealt = "",
+
+  badgenyt = "false",
+  badgerabat = "false",
+  badgerabatsats = "",
+  badgefaapladser = "false",
+
+  holdnavn = "",
+  tidspunkt = "",
+  aldersgruppe = "",
+  niveau = "",
+  pladserpaaholdet = "",
+  lokale = "",
+  holdbeskrivelse = "",
+
+  underviserfoto = "",
+  underviserfotoalt = "",
+  undervisernavn = "",
+  underviserinfo = "",
+} = Astro.props;
+---
+
+<article class="card border-blue-500 border-2 @container">
+  <a href={url} class="flex flex-col justify-between h-full">
+    <header class="mb-xs relative danseholdheader">
+      <img src={cardimage} alt={cardimagealt} class="object-cover h-9xl w-full" />
+      {badgenyt === "true" && <div class="badge absolute top-xs p-xxs bg-blue-400">Nyt hold!</div>}
+      {badgerabat === "true" && <div class="badge absolute top-xs right-0 p-xxs bg-yellow-500">{badgerabatsats} rabat</div>}
+      {badgefaapladser === "true" && <div class="badge absolute bottom-xs right-0 p-xxs bg-red-400">Kun få pladser tilbage</div>}
+      <!-- <div class="badge absolute top-xs p-xxs bg-blue-400">Nyt hold!</div>
+      <div class="badge absolute top-xs right-0 p-xxs bg-yellow-500">10% rabat</div>
+      <div class="badge absolute bottom-xs right-0 p-xxs bg-red-400">Kun få pladser tilbage</div> -->
+    </header>
+    <section class="holdinfo p-xs grow border-b-2 border-blue-500">
+      <h3 class="text-small @lg:text-large mb-xs">{holdnavn}</h3>
+      <div class="flex flex-col @md:flex-row @md:justify-between mb-xs">
+        <div class="venstre grow">
+          <div><span>Tid: </span><span>{tidspunkt}</span></div>
+          <div><span>Alder: </span><span>{aldersgruppe}</span></div>
+          <div><span>Niveau: </span><span>{niveau}</span></div>
+        </div>
+        <div class="hoejre grow">
+          <div><span>Deltagere: </span><span>{pladserpaaholdet}</span></div>
+          <div><span>Lokale: </span> <span>{lokale}</span></div>
+        </div>
+      </div>
+      <p class="mb-xs">{holdbeskrivelse}</p>
+    </section>
+
+    <section class="underviserinfo flex my-xs gap-xs p-xs">
+      <div class="flex-none relative">
+        <img src={underviserfoto} alt={underviserfotoalt} class="object-cover h-lg w-lg rounded-full" />
+        <svg class="bagde absolute top-xxs w-s text-red-600 fill-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"></path>
+        </svg>
+      </div>
+      <div class="">
+        <div><span>Underviser: </span><span>{undervisernavn}</span></div>
+        <div><span>{underviserinfo}</span></div>
+      </div>
+    </section>
+  </a>
+</article>

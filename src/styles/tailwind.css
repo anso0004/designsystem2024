@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    /* p{
-        @apply text-body;
-    } */
+@layer base {
+  /* refererer til tailwind config. base font-size */
+  p {
+    @apply text-body;
+  }
 }
